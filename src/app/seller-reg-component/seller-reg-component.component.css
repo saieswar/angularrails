@@ -109,3 +109,7 @@ span.input-group-addon i {
 	font-size: 11px;
 	text-align: center;
 }
+
+.text-danger{
+    color: #ce0c0c;
+}

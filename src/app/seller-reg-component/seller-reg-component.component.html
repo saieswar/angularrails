@@ -8,17 +8,18 @@
 <div class="container">
 			<div class="row main">
 				<div class="main-login main-center">
-				<h3>Seller Sign up </h3>
-					<form #sellerRegForm="ngForm">
+
+	<h2>Seller Signup</h2>
+					<form #sellerRegForm="ngForm" (ngSubmit)="sellerRegForm.valid && signup()">
 						
 						<div class="form-group">
 							<label for="name" class="cols-sm-2 control-label">Full Name</label>
 							<div class="cols-sm-10">
 								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>{{fullname.errors | json}}
+									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
 									<input type="text" class="form-control" name="fullname" id="fullname"  placeholder="Enter your Full Name" [(ngModel)]="sellerObj.fullname" #fullname="ngModel" required #spy/>
-								  <span *ngIf="fullname.errors.required">This field required</span>
                 </div>
+									<span class="pull-right text-danger" *ngIf="fullname.touched && fullname.errors?.required">This field required</span>
 							</div>
 						</div>
 
@@ -28,8 +29,10 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="email" id="email"  placeholder="Enter your Email"  [(ngModel)]="sellerObj.email" #email="ngModel" required #spy/>
+									<input type="text" class="form-control" name="email" id="email"  placeholder="Enter your Email"  [(ngModel)]="sellerObj.email" #email="ngModel" [email]="true" required/>
 								</div>
+								<span class="pull-right text-danger" *ngIf="email.touched && email.errors?.required">This field required</span>
+								<span class="pull-right text-danger" *ngIf="email.touched && !email.errors?.required && email.invalid">Invalid email</span>
 							</div>
 						</div>
 
@@ -39,8 +42,10 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-									<input type="password" class="form-control" name="password" id="password"  placeholder="Enter your Password" [(ngModel)]="sellerObj.password" #password="ngModel" required #spy/>
+									<input type="password" class="form-control" name="password" id="password"  placeholder="Enter your Password" [(ngModel)]="sellerObj.password" #password="ngModel" required minlength="5" validateEqual="confirm" reverse="true"/>
 								</div>
+								<span class="pull-right text-danger" *ngIf="password.touched && password.errors?.required">This field required</span>
+								<span class="pull-right text-danger" *ngIf="password.errors?.minlength">minimum 5 characters</span>
 							</div>
 						</div>
 
@@ -49,8 +54,10 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-									<input type="password" class="form-control" name="confirm" id="confirm"  placeholder="Confirm your Password" [(ngModel)]="sellerObj.confirm_password" #confirmpassword="ngModel" required #spy/>
+									<input type="password" class="form-control" name="confirm" id="confirm"  placeholder="Confirm your Password" [(ngModel)]="sellerObj.confirm_password" #confirmpassword="ngModel" required validateEqual="password"/>
 								</div>
+								<span class="pull-right text-danger" *ngIf="confirmpassword.touched && confirmpassword.errors?.required">This field required</span>
+								<span class="pull-right text-danger" *ngIf="confirmpassword.errors?.validateEqual || password.errors?.validateEqual">Password mismatch</span>
 							</div>
 						</div>
             
@@ -61,11 +68,12 @@
 									<span class="input-group-addon"><i class="fa fa-phone fa" aria-hidden="true"></i></span>
 									<input type="text" class="form-control" name="phone" id="phone"  placeholder="Enter your Phone" [(ngModel)]="sellerObj.phone" #phone="ngModel" required #spy/>
 								</div>
+								<span class="pull-right text-danger" *ngIf="phone.touched && phone.errors?.required">This field required</span>
 							</div>
 						</div>
 
 						<div class="form-group ">
-							<a href="http://deepak646.blogspot.in" target="_blank" type="button" id="button" class="btn btn-primary btn-lg btn-block login-button">Register</a>
+							<input type="submit" id="button" class="btn btn-primary btn-lg btn-block login-button" value="Register">
 						</div>
 						
 					</form>

@@ -7,16 +7,21 @@ import { Seller } from './seller';
   styleUrls: ['./seller-reg-component.component.css']
 })
 export class SellerRegComponentComponent implements OnInit {
-  sellerObj = {
-    fullname:'',
-    email:'',
-    phone:'',
-    password: '',
-    confirm_password: ''
-  }
+  public sellerObj:Seller;
   constructor() { }
 
   ngOnInit() {
+    this.sellerObj = {
+      fullname:'',
+      email:'',
+      phone:'',
+      password: '',
+      confirm_password: ''
+    }
+  }
+
+  signup(){
+    console.log(this.sellerObj);
   }
 
 }

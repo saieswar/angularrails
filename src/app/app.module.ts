@@ -13,13 +13,16 @@ import { routes } from './app.routes';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { LoginComponent } from './login/login.component';
 
+import { EqualValidator } from './password-validation';
+
 @NgModule({
   declarations: [
     AppComponent,
     SellerRegComponentComponent,
     PageNotFoundComponent,
     WelcomeComponent,
-    LoginComponent
+    LoginComponent,
+    EqualValidator
   ],
   imports: [
     BrowserModule,

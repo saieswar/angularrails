@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { Seller } from './seller';
+import { SignupService } from '../signup-service/signup.service';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 @Component({
   selector: 'app-seller-reg-component',
@@ -8,20 +10,35 @@ import { Seller } from './seller';
 })
 export class SellerRegComponentComponent implements OnInit {
   public sellerObj:Seller;
-  constructor() { }
+  public errorMsg:string;
+  constructor(private signupservice:SignupService,public toastr: ToastsManager, vcr: ViewContainerRef) { 
+    this.toastr.setRootViewContainerRef(vcr);
+  }
 
   ngOnInit() {
-    this.sellerObj = {
-      fullname:'',
+  this.sellerObj = {
+      full_name:'',
       email:'',
       phone:'',
       password: '',
-      confirm_password: ''
+      password_confirmation: ''
     }
   }
 
-  signup(){
-    console.log(this.sellerObj);
+  sellerSignup(regForm){
+    this.signupservice.signup(this.sellerObj)
+    .subscribe(res => {
+      if(!res.success){
+        this.toastr.error(res.error+'!', 'Sorry!');
+      }else if(res.success){
+        regForm.reset();
+        this.toastr.success(res.message+'!', 'Success');
+      }
+    },
+    err => {
+      console.log(err);
+      this.toastr.error('Something went wrong!', 'Sorry!');
+    });
   }
 
 }

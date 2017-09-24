@@ -15,7 +15,6 @@ export class SignupService {
     return this.http.post('https://24023994.ngrok.io/register',user)
     .map((res:Response) => res.json())
     .catch((error:any) => Observable.throw(error.json().error || 'Server error'))
-    
   }
 
 }

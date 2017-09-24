@@ -1,4 +1,5 @@
 export interface Seller {
+    role:string;
     full_name:string;
     email:string;
     phone:string;

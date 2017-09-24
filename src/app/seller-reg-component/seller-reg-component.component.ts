@@ -17,6 +17,7 @@ export class SellerRegComponentComponent implements OnInit {
 
   ngOnInit() {
   this.sellerObj = {
+      role:'seller',
       full_name:'',
       email:'',
       phone:'',

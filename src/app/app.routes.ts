@@ -7,16 +7,12 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { LoginComponent } from "./login/login.component";
 
 export const routes: Routes = [
-    { path: '', component: WelcomeComponent,children: [
-        { path: 'seller_signup', component: SellerRegComponentComponent },
-        { path: 'login', component: LoginComponent }
-    ] },
+    { path: '', component: WelcomeComponent,
+        children: [
+            { path: 'seller_signup', component: SellerRegComponentComponent },
+            { path: 'login', component: LoginComponent }
+        ] 
+    },
     { path: '**', component: PageNotFoundComponent }
-
-    //{ path: 'path/:routeParam', component: MyComponent },
-    //{ path: 'staticPath', component: ... },
-    //{ path: '**', component: ... },
-    //{ path: 'oldPath', redirectTo: '/staticPath' },
-    //{ path: ..., component: ..., data: { message: 'Custom' }
 ];
 

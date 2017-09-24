@@ -19,7 +19,8 @@ import { LoginComponent } from './login/login.component';
 import { EqualValidator } from './password-validation';
 
 //serivces
-import { SignupService } from './signup-service/signup.service';
+import { SignupService } from './services/signup.service';
+import { LoginService } from './services/login.service';
 
 
 @NgModule({
@@ -39,7 +40,7 @@ import { SignupService } from './signup-service/signup.service';
     ToastModule.forRoot(),
     RouterModule.forRoot(routes)
   ],
-  providers: [SignupService],
+  providers: [SignupService,LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { Seller } from './seller';
-import { SignupService } from '../signup-service/signup.service';
+import { SignupService } from '../services/signup.service';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 @Component({

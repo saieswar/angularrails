@@ -45,7 +45,7 @@
 									<input type="password" class="form-control" name="password" id="password"  placeholder="Enter your Password" [(ngModel)]="sellerObj.password" #password="ngModel" required minlength="6" validateEqual="confirm" reverse="true"/>
 								</div>
 								<span class="pull-right text-danger" *ngIf="password.touched && password.errors?.required">This field required</span>
-								<span class="pull-right text-danger" *ngIf="password.errors?.minlength">minimum 5 characters</span>
+								<span class="pull-right text-danger" *ngIf="password.errors?.minlength">minimum 6 characters</span>
 							</div>
 						</div>
 

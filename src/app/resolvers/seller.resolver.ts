@@ -2,13 +2,16 @@ import { Injectable } from '@angular/core';
 import { ActivatedRoute, Resolve } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
 
+import { SellerService } from "../services/seller.service";
+
+
 @Injectable()
 export class SellerResolver implements Resolve<any> {
 
-  constructor() { }
+  constructor(private sellerservice:SellerService) { }
 
   resolve():boolean | Observable<any[]> | Object{
-    return {list:[1,2,3,4]};
+    return this.sellerservice.getProperties();
   }
 
 }

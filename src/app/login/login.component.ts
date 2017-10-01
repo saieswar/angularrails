@@ -25,8 +25,10 @@ export class LoginComponent implements OnInit {
         this.toastr.error(res.error+'!', 'Sorry!');
       }else if(res.success){
         console.log(res);
-        if(res.user.role == 'Seller')
+        if(res.user.role == 'Seller'){
+          localStorage.setItem('auth_token',res.user.auth_token);
           this.router.navigate(["/seller-dashboard"]);
+        }
       }
     },
     err => {

@@ -22,8 +22,10 @@ import { EqualValidator } from './password-validation';
 import { SignupService } from './services/signup.service';
 import { LoginService } from './services/login.service';
 import { ConfigService } from './services/config.service';
+import { AuthGuardService } from './services/auth-guard.service';
 import { SellerdashboardComponent } from './sellerdashboard/sellerdashboard.component';
 import { AgentdashboardComponent } from './agentdashboard/agentdashboard.component';
+import { SellerService } from "./services/seller.service";
 
 
 @NgModule({
@@ -45,7 +47,7 @@ import { AgentdashboardComponent } from './agentdashboard/agentdashboard.compone
     ToastModule.forRoot(),
     RouterModule.forRoot(routes)
   ],
-  providers: [SignupService,LoginService,ConfigService],
+  providers: [SignupService,LoginService,ConfigService,AuthGuardService,SellerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

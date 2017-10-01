@@ -13,7 +13,7 @@ export class SignupService {
   constructor(private http:Http,private configservice:ConfigService) { }
 
   signup(user):Observable<any>{
-    return this.http.post(this.configservice.getIp()+'/register',user)
+    return this.http.post(this.configservice.getIp()+'register',user)
     .map((res:Response) => res.json())
     .catch((error:any) => Observable.throw(error.json().error || 'Server error'))
   }

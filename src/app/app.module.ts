@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 
 //custom modules
 import { ToastModule } from 'ng2-toastr/ng2-toastr';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { routes } from './app.routes';
 import { WelcomeComponent } from './welcome/welcome.component';
@@ -44,6 +45,7 @@ import { SellerService } from "./services/seller.service";
     BrowserModule,
     FormsModule,
     HttpModule,
+    NgbModule.forRoot(),
     ToastModule.forRoot(),
     RouterModule.forRoot(routes)
   ],

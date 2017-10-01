@@ -5,6 +5,8 @@ import { SellerRegComponentComponent } from './seller-reg-component/seller-reg-c
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { LoginComponent } from "./login/login.component";
+import { SellerdashboardComponent } from './sellerdashboard/sellerdashboard.component';
+import { AgentdashboardComponent } from "./agentdashboard/agentdashboard.component";
 
 export const routes: Routes = [
     { path: '', component: WelcomeComponent,
@@ -13,6 +15,8 @@ export const routes: Routes = [
             { path: 'login', component: LoginComponent }
         ] 
     },
+    { path:'seller-dashboard',component:SellerdashboardComponent },
+    { path:'agent-dashboard',component:AgentdashboardComponent },
     { path: '**', component: PageNotFoundComponent }
 ];
 

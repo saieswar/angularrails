@@ -21,6 +21,9 @@ import { EqualValidator } from './password-validation';
 //serivces
 import { SignupService } from './services/signup.service';
 import { LoginService } from './services/login.service';
+import { ConfigService } from './services/config.service';
+import { SellerdashboardComponent } from './sellerdashboard/sellerdashboard.component';
+import { AgentdashboardComponent } from './agentdashboard/agentdashboard.component';
 
 
 @NgModule({
@@ -30,7 +33,9 @@ import { LoginService } from './services/login.service';
     PageNotFoundComponent,
     WelcomeComponent,
     LoginComponent,
-    EqualValidator
+    EqualValidator,
+    SellerdashboardComponent,
+    AgentdashboardComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -40,7 +45,7 @@ import { LoginService } from './services/login.service';
     ToastModule.forRoot(),
     RouterModule.forRoot(routes)
   ],
-  providers: [SignupService,LoginService],
+  providers: [SignupService,LoginService,ConfigService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

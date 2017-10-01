@@ -11,13 +11,12 @@ import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 export class SellerRegComponentComponent implements OnInit {
   public sellerObj:Seller;
   public errorMsg:string;
-  constructor(private signupservice:SignupService,public toastr: ToastsManager, vcr: ViewContainerRef) { 
-    this.toastr.setRootViewContainerRef(vcr);
-  }
+  constructor(private signupservice:SignupService,
+  public toastr: ToastsManager) {}
 
   ngOnInit() {
   this.sellerObj = {
-      role:'seller',
+      role:'Seller',
       full_name:'',
       email:'',
       phone:'',

@@ -7,16 +7,22 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { LoginComponent } from "./login/login.component";
 import { SellerdashboardComponent } from './sellerdashboard/sellerdashboard.component';
 import { AgentdashboardComponent } from "./agentdashboard/agentdashboard.component";
-import { AuthGuardService } from './services/auth-guard.service';
+import { SellerResolver } from './resolvers/seller.resolver';
 
 export const routes: Routes = [
-    { path: '', component: WelcomeComponent,
-        children: [
-            { path: 'seller_signup', component: SellerRegComponentComponent },
-            { path: 'login', component: LoginComponent }
-        ] 
+    { path: '', 
+      component: WelcomeComponent,
+      children: [
+         { path: 'seller_signup', component: SellerRegComponentComponent },
+         { path: 'login', component: LoginComponent }
+      ] 
     },
-    { path:'seller-dashboard',component:SellerdashboardComponent,canActivate:[AuthGuardService] },
+    { path:'seller-dashboard',
+      component:SellerdashboardComponent,
+      resolve:{
+        data:SellerResolver
+      } 
+    },
     { path:'agent-dashboard',component:AgentdashboardComponent },
     { path: '**', component: PageNotFoundComponent }
 ];

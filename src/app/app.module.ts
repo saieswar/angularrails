@@ -22,7 +22,7 @@ import { EqualValidator } from './password-validation';
 import { SignupService } from './services/signup.service';
 import { LoginService } from './services/login.service';
 import { ConfigService } from './services/config.service';
-import { AuthGuardService } from './services/auth-guard.service';
+import { SellerResolver } from './resolvers/seller.resolver';
 import { SellerdashboardComponent } from './sellerdashboard/sellerdashboard.component';
 import { AgentdashboardComponent } from './agentdashboard/agentdashboard.component';
 import { SellerService } from "./services/seller.service";
@@ -47,7 +47,13 @@ import { SellerService } from "./services/seller.service";
     ToastModule.forRoot(),
     RouterModule.forRoot(routes)
   ],
-  providers: [SignupService,LoginService,ConfigService,AuthGuardService,SellerService],
+  providers: [
+    SignupService,
+    LoginService,
+    ConfigService,
+    SellerResolver,
+    SellerService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

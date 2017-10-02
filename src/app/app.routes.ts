@@ -17,7 +17,7 @@ export const routes: Routes = [
          { path: 'login', component: LoginComponent }
       ] 
     },
-    { path:'seller-dashboard',
+    { path:'seller',
       component:SellerdashboardComponent,
       resolve:{
         data:SellerResolver

@@ -9,6 +9,8 @@ import { SellerdashboardComponent } from './sellerdashboard/sellerdashboard.comp
 import { AgentdashboardComponent } from "./agentdashboard/agentdashboard.component";
 import { SellerResolver } from './resolvers/seller.resolver';
 
+import { SellerCreatePropComponent } from './seller-create-prop/seller-create-prop.component';
+
 export const routes: Routes = [
     { path: '', 
       component: WelcomeComponent,
@@ -20,8 +22,11 @@ export const routes: Routes = [
     { path:'seller',
       component:SellerdashboardComponent,
       resolve:{
-        data:SellerResolver
-      } 
+        properties:SellerResolver
+      },
+      children:[
+        { path:'create_prop',component:SellerCreatePropComponent }
+      ] 
     },
     { path:'agent-dashboard',component:AgentdashboardComponent },
     { path: '**', component: PageNotFoundComponent }

@@ -1,1 +1,17 @@
-<input id="typeahead-format" type="text" class="form-control" [(ngModel)]="model" [ngbTypeahead]="search"/>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Welcome {{user_name}}</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a routerLink="./create_prop">Property</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#"><span class="glyphicon glyphicon-log-in" (click)="sellerLogout()"></span> Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>
+

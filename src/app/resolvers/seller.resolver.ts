@@ -12,5 +12,6 @@ export class SellerResolver implements Resolve<any> {
 
   resolve():boolean | Observable<any[]> | Object{
     return this.sellerservice.getProperties();
+    // return true
   }
 }

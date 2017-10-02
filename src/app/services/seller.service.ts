@@ -17,15 +17,34 @@ export class SellerService {
   getProperties():Observable<any[]>{
     let headers = new Headers();
     headers.append('auth_token',localStorage.getItem('auth_token'));
-    return this.http.get('https://jsonplaceholder.typicode.com/comments',{
+    return this.http.get(this.configservice.getIp()+'properties',{
       headers:headers
     })
     .map((res:Response) => {
       let data = res.json();
-      // this.router.navigate(['/login']);
+      if(data.error == "Not authorized!"){
+        this.router.navigate(['/login']);
+      }else if(data.role == "Seller"){
+        // this.router.navigate(['/login']);
+      }
       return data;
     })
     .catch((error:any) => Observable.throw(error.json().error || 'Server Error'));
+  }
+
+  zipAutoComplete(): Observable<string[]>{
+    let headers = new Headers();
+    headers.append('auth_token',localStorage.getItem('auth_token'));
+    return this.http.get(this.configservice.getIp()+'zip_autocomplete',{
+      headers:headers
+    })
+    .map((res:Response)=>res.json().result);
+  }
+
+
+  logout(){
+    localStorage.removeItem('auth_token');
+    this.router.navigate(['/login']);  
   }
 
 }

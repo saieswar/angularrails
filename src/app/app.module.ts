@@ -12,7 +12,6 @@ import { FormsModule } from '@angular/forms';
 
 //custom modules
 import { ToastModule } from 'ng2-toastr/ng2-toastr';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { routes } from './app.routes';
 import { WelcomeComponent } from './welcome/welcome.component';
@@ -27,7 +26,9 @@ import { SellerResolver } from './resolvers/seller.resolver';
 import { SellerdashboardComponent } from './sellerdashboard/sellerdashboard.component';
 import { AgentdashboardComponent } from './agentdashboard/agentdashboard.component';
 import { SellerService } from "./services/seller.service";
+import { SellerCreatePropComponent } from './seller-create-prop/seller-create-prop.component';
 
+import { TypeaheadModule } from 'ngx-bootstrap';
 
 @NgModule({
   declarations: [
@@ -38,14 +39,15 @@ import { SellerService } from "./services/seller.service";
     LoginComponent,
     EqualValidator,
     SellerdashboardComponent,
-    AgentdashboardComponent
+    AgentdashboardComponent,
+    SellerCreatePropComponent
   ],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
     HttpModule,
-    NgbModule.forRoot(),
+    TypeaheadModule.forRoot(),
     ToastModule.forRoot(),
     RouterModule.forRoot(routes)
   ],

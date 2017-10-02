@@ -1,18 +1,37 @@
 <br>
 <h2>Create Property</h2>
 <div class="container">
-  <form #propertyForm="ngForm" novalidate>
-    {{zip.errors?.required | json}}
+  <form #propertyForm="ngForm" (ngSubmit)="createProperty(propertyForm)" novalidate>
+  <label>Address</label>
+  <textarea class="form-control" name="address" [(ngModel)]="prop.address"></textarea>  
+  <label>Zip</label>
   <input [(ngModel)]="prop.zip"
        [typeahead]="states"
        (typeaheadOnSelect)="typeheadSelect($event)"
        typeaheadOptionField="city"
        name="zip"
        #zip="ngModel"
-       class="form-control" required>
-
-  <input type="text" class="form-control" name="city" [(ngModel)]="prop.city" placeholder="city">
-  <input type="text" class="form-control" name="state" [(ngModel)]="prop.state" placeholder="state">
+       class="form-control" placeholder="Zip" required>
+  <label>City</label>
+  <input type="text" class="form-control" name="city" disabled [(ngModel)]="prop.city" placeholder="City">
+  <label>State</label>
+  <input type="text" class="form-control" name="state" disabled [(ngModel)]="prop.state" placeholder="State">
+  <label>Property Type</label>
+  <!--<input type="text" class="form-control" name="proptype"  [(ngModel)]="prop.property_type" placeholder="Property type">-->
+  <select class="form-control" [(ngModel)]="prop.property_type" name="proptype">
+    <option *ngFor="let type of proptypes" [value]="type">{{type}}</option>
+  </select>
+  <label>Bed Rooms</label>
+  <input type="text" class="form-control" name="bedrooms"  [(ngModel)]="prop.bedrooms" placeholder="Bed rooms">
+  <label>Bath Rooms</label>
+  <input type="text" class="form-control" name="bathrooms"  [(ngModel)]="prop.bathrooms" placeholder="Bath rooms">
+  
+  <label>Lot Size</label>
+  <input type="text" class="form-control" name="lotsize"  [(ngModel)]="prop.lot_size" placeholder="Lot Size">
+  <label>Estimated Sale Price</label>
+  <input type="text" class="form-control" name="estprice"  [(ngModel)]="prop.est_sale_price" placeholder="Estimated Sale Price">  
+  <br>
+  <button class="btn btn-primary" type="submit">Submit</button>
   </form>     
 
 </div>

@@ -29,6 +29,7 @@ import { SellerService } from "./services/seller.service";
 import { SellerCreatePropComponent } from './seller-create-prop/seller-create-prop.component';
 
 import { TypeaheadModule } from 'ngx-bootstrap';
+import { SellerPropListComponent } from './seller-prop-list/seller-prop-list.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { TypeaheadModule } from 'ngx-bootstrap';
     EqualValidator,
     SellerdashboardComponent,
     AgentdashboardComponent,
-    SellerCreatePropComponent
+    SellerCreatePropComponent,
+    SellerPropListComponent
   ],
   imports: [
     BrowserAnimationsModule,

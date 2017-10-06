@@ -62,3 +62,13 @@
         margin-top: 20px;
     }
 }
+
+li{
+height:20px;
+float:left;
+list-style-type: none;
+width:70px;
+padding:3px;
+background-repeat: no-repeat;
+background-position: center 30px;
+} 

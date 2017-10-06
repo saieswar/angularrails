@@ -18,6 +18,8 @@ import { SellerService } from '../services/seller.service';
 })
 export class SellerCreatePropComponent implements OnInit {
   states:any[];
+  isZipLoading:boolean;
+  isProptypeLoading:boolean;
   proptypes:any[];
   prop = {
     city:'',
@@ -35,10 +37,10 @@ export class SellerCreatePropComponent implements OnInit {
 
   ngOnInit() {
     this.sellerservice.zipAutoComplete()
-    .subscribe(res => this.states = res)
+    .subscribe(res => {this.states = res;this.isZipLoading = true;});
 
     this.sellerservice.getPropertyTypes()
-    .subscribe(res => this.proptypes = res)
+    .subscribe(res => {this.proptypes = res;this.isProptypeLoading = true});
   }  
 
   typeheadSelect(e:TypeaheadMatch){

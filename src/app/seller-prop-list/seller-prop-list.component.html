@@ -1,14 +1,21 @@
 <div class="index-content">
     <div class="container">
-            <a href="blog-ici.html" *ngFor="let prop of properties">
+            <div href="blog-ici.html" *ngFor="let prop of properties">
                 <div class="col-lg-4">
                     <div class="card">
                         <img src="http://cevirdikce.com/proje/hasem-2/images/finance-1.jpg">
                         <h4>Investment Strategy</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <a href="blog-ici.html" class="blue-button">Read More</a>
+                        <ul>
+                        <li><i class="fa fa-bath" aria-hidden="true"></i>&nbsp;{{prop.bathrooms}}</li>
+                        <li><i class="fa fa-bed" aria-hidden="true"></i>&nbsp;{{prop.bedrooms}}</li>
+                        <li><i class="fa fa-square-o" aria-hidden="true"></i>&nbsp;{{prop.lot_size}}</li>
+                        </ul>
+                        <br>
+                        <br>
+                        <!--<a href="blog-ici.html" class="blue-button">Read More</a>-->
                     </div>
                 </div>
-            </a>
+            </div>
     </div>
 </div>

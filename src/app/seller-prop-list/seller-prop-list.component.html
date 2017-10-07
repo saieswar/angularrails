@@ -1,6 +1,6 @@
 <div class="index-content">
     <div class="container">
-            <div href="blog-ici.html" *ngFor="let prop of properties">
+            <div href="blog-ici.html" *ngFor="let prop of properties"  (click)="openModal(template,prop)">
                 <div class="col-lg-4">
                     <div class="card">
                         <img src="http://cevirdikce.com/proje/hasem-2/images/finance-1.jpg">
@@ -13,9 +13,29 @@
                         </ul>
                         <br>
                         <br>
-                        <!--<a href="blog-ici.html" class="blue-button">Read More</a>-->
+                        <a *ngIf="!prop.bid_active" [routerLink]="['../prop_edit',prop.property_id]" class="blue-button">Edit</a>
                     </div>
                 </div>
             </div>
     </div>
 </div>
+
+<template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Property Details</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <label>Address: {{propdetail.address}}</label><br>
+    <label>Zip: {{propdetail.zip_code}}</label><br>
+    <label>City: {{propdetail.city}}</label><br>
+    <label>State: {{propdetail.state}}</label><br>
+    <label>Lot Size: {{propdetail.lot_size}}</label><br>
+    <label>Estimated Sale Price: {{propdetail.est_sale_price}}</label>
+  </div>
+  <div class="modal-footer">
+      <button class="btn btn-default" (click)="modalRef.hide()">Close</button>
+  </div>
+</template>

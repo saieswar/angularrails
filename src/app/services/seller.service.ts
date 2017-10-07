@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers} from '@angular/http';
+import { Http, Response, Headers } from '@angular/http';
 import { Router } from '@angular/router';
 import { ConfigService } from './config.service';
 import { Observable } from 'rxjs/Rx';
@@ -59,6 +59,22 @@ export class SellerService {
     let headers = new Headers();
     headers.append('auth_token',localStorage.getItem('auth_token'));
     return this.http.post(this.configservice.getIp()+'post_property',prop,{
+      headers:headers
+    })
+    .map((res:Response) => {
+      let data = res.json();
+      if(data.error == "Not authorized!"){
+        this.router.navigate(['/login']);
+      }
+      return data;
+    })
+    .catch((error:any) => Observable.throw(error.json().error || 'Server Error'));
+  }
+
+  getPropertyDetails(id):Observable<any>{
+    let headers = new Headers();
+    headers.append('auth_token',localStorage.getItem('auth_token'));
+    return this.http.get(this.configservice.getIp()+'get_property_details?property_id='+id,{
       headers:headers
     })
     .map((res:Response) => {

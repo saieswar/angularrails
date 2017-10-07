@@ -27,7 +27,8 @@ export const routes: Routes = [
       },
       children:[
         { path:'create_prop',component:SellerCreatePropComponent },
-        { path:'prop_list',component:SellerPropListComponent}
+        { path:'prop_list',component:SellerPropListComponent},
+        { path:'prop_edit/:id',component:SellerCreatePropComponent }
       ] 
     },
     { path:'agent-dashboard',component:AgentdashboardComponent },

@@ -28,7 +28,7 @@ import { AgentdashboardComponent } from './agentdashboard/agentdashboard.compone
 import { SellerService } from "./services/seller.service";
 import { SellerCreatePropComponent } from './seller-create-prop/seller-create-prop.component';
 
-import { TypeaheadModule } from 'ngx-bootstrap';
+import { TypeaheadModule, ModalModule } from 'ngx-bootstrap';
 import { SellerPropListComponent } from './seller-prop-list/seller-prop-list.component';
 
 @NgModule({
@@ -49,6 +49,7 @@ import { SellerPropListComponent } from './seller-prop-list/seller-prop-list.com
     BrowserModule,
     FormsModule,
     HttpModule,
+    ModalModule.forRoot(),
     TypeaheadModule.forRoot(),
     ToastModule.forRoot(),
     RouterModule.forRoot(routes)

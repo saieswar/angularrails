@@ -5,18 +5,24 @@ import { SellerRegComponentComponent } from './seller-reg-component/seller-reg-c
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { LoginComponent } from "./login/login.component";
-import { SellerdashboardComponent } from './sellerdashboard/sellerdashboard.component';
-import { AgentdashboardComponent } from "./agentdashboard/agentdashboard.component";
-import { SellerResolver } from './resolvers/seller.resolver';
 
+import { SellerdashboardComponent } from './sellerdashboard/sellerdashboard.component';
+import { SellerResolver } from './resolvers/seller.resolver';
 import { SellerCreatePropComponent } from './seller-create-prop/seller-create-prop.component';
 import { SellerPropListComponent } from './seller-prop-list/seller-prop-list.component';
+
+import { AgentdashboardComponent } from "./agentdashboard/agentdashboard.component";
+import { AgentSignupComponent } from './agent-signup/agent-signup.component';
+import { AgentResolver } from './resolvers/agent.resolver';
+import { AgentPropListComponent } from './agent-prop-list/agent-prop-list.component';
 
 export const routes: Routes = [
     { path: '', 
       component: WelcomeComponent,
       children: [
+         { path:'', redirectTo:'/login', pathMatch:'full' },
          { path: 'seller_signup', component: SellerRegComponentComponent },
+         { path:'agent_signup',component:AgentSignupComponent },
          { path: 'login', component: LoginComponent }
       ] 
     },
@@ -26,12 +32,22 @@ export const routes: Routes = [
         properties:SellerResolver
       },
       children:[
+        { path:'',redirectTo:'/seller/prop_list' ,pathMatch:'full'},
         { path:'create_prop',component:SellerCreatePropComponent },
-        { path:'prop_list',component:SellerPropListComponent},
+        { path:'prop_list',component:SellerPropListComponent },
         { path:'prop_edit/:id',component:SellerCreatePropComponent }
       ] 
     },
-    { path:'agent-dashboard',component:AgentdashboardComponent },
+    { path:'agent',
+      component:AgentdashboardComponent,
+      resolve:{
+        properties:AgentResolver
+      },
+      children:[
+        { path:'', redirectTo:'/agent/prop_list',pathMatch:'full' },
+        { path:'prop_list',component:AgentPropListComponent }
+      ]
+    },
     { path: '**', component: PageNotFoundComponent }
 ];
 

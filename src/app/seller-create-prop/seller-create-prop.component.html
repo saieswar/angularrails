@@ -12,7 +12,7 @@
     <template #customItemTemplate let-model="item" let-index="index">
       <h5>{{model.city}}</h5>
     </template>
-    <input [(ngModel)]="prop.zip"
+    <input [(ngModel)]="prop.zip_code"
         [typeahead]="states"
         (typeaheadOnSelect)="typeheadSelect($event)"
         typeaheadOptionField="zip"
@@ -40,7 +40,7 @@
     <label>Estimated Sale Price</label>
     <input type="text" class="form-control" name="estprice"  [(ngModel)]="prop.est_sale_price" placeholder="Estimated Sale Price">  
     <br>
-    <button class="btn btn-primary" type="submit">Submit</button>
+    <button class="btn btn-primary" type="submit">{{formTitle == 'Edit'?'Update':'Create'}}</button>
     </form>     
 
   </div>

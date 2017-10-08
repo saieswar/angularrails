@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { SellerService } from '../services/seller.service';
 
 @Component({
   selector: 'app-agentdashboard',
@@ -8,9 +8,12 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AgentdashboardComponent implements OnInit {
 
-  constructor(private route:ActivatedRoute) { }
+  constructor(private sellerservice:SellerService) { }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  agentLogout(){
+    this.sellerservice.logout();
   }
 
 }

@@ -20,37 +20,22 @@ export class SellerService {
     return this.http.get(this.configservice.getIp()+'properties',{
       headers:headers
     })
-    .map((res:Response) => {
-      let data = res.json();
-      if(data.error == "Not authorized!"){
-        this.router.navigate(['/login']);
-      }else if(data.role == "Seller"){
-        // this.router.navigate(['/login']);
-      }
-      return data;
-    })
+    .map(this.handleResponse)
     .catch((error:any) => Observable.throw(error.json().error || 'Server Error'));
   }
 
-  zipAutoComplete(): Observable<string[]>{
-    let headers = new Headers();
-    headers.append('auth_token',localStorage.getItem('auth_token'));
-    return this.http.get(this.configservice.getIp()+'zip_autocomplete',{
-      headers:headers
-    })
-    .map((res:Response)=>res.json().result);
+  zipAutoComplete(): Observable<any>{
+    return this.http.get(this.configservice.getIp()+'zip_autocomplete')
+    .map(this.handleResponse)
   }
 
-  getPropertyTypes(): Observable<any[]>{
+  getPropertyTypes(): Observable<any>{
     let headers = new Headers();
     headers.append('auth_token',localStorage.getItem('auth_token'));
     return this.http.get(this.configservice.getIp()+'property_types',{
       headers:headers
     })
-    .map((res:Response)=>{
-      var data = res.json();
-      return data.property_types
-    });
+    .map(this.handleResponse)
   }
 
 
@@ -61,13 +46,7 @@ export class SellerService {
     return this.http.post(this.configservice.getIp()+'post_property',prop,{
       headers:headers
     })
-    .map((res:Response) => {
-      let data = res.json();
-      if(data.error == "Not authorized!"){
-        this.router.navigate(['/login']);
-      }
-      return data;
-    })
+    .map(this.handleResponse)
     .catch((error:any) => Observable.throw(error.json().error || 'Server Error'));
   }
 
@@ -77,20 +56,35 @@ export class SellerService {
     return this.http.get(this.configservice.getIp()+'get_property_details?property_id='+id,{
       headers:headers
     })
-    .map((res:Response) => {
-      let data = res.json();
-      if(data.error == "Not authorized!"){
-        this.router.navigate(['/login']);
-      }
-      return data;
-    })
+    .map(this.handleResponse)
     .catch((error:any) => Observable.throw(error.json().error || 'Server Error'));
   }
 
+
+  updateProperty(prop): Observable<any>{
+    console.log(prop);
+    let headers = new Headers();
+    headers.append('auth_token',localStorage.getItem('auth_token'));
+    return this.http.post(this.configservice.getIp()+'update_property',prop,{
+      headers:headers
+    })
+    .map(this.handleResponse)
+    .catch((error:any) => Observable.throw(error.json().error || 'Server Error'));
+  }
 
   logout(){
     localStorage.removeItem('auth_token');
     this.router.navigate(['/login']);  
   }
 
+
+  handleResponse(res:Response){
+     let data = res.json();
+      if(data.error == "Not authorized!"){
+        this.router.navigate(['/login']);
+      }else if(data.role == "Agent"){
+        // this.router.navigate(['/login']);
+      }
+      return data;
+  }
 }

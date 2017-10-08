@@ -28,6 +28,9 @@ export class LoginComponent implements OnInit {
         if(res.user.role == 'Seller'){
           localStorage.setItem('auth_token',res.user.auth_token);
           this.router.navigate(["/seller"]);
+        }else if(res.user.role == "Agent"){
+          localStorage.setItem('auth_token',res.user.auth_token);
+          this.router.navigate(["/agent"]);
         }
       }
     },

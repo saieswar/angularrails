@@ -27,7 +27,7 @@ export class SellerCreatePropComponent implements OnInit {
     city:'',
     state:'',
     address:'',
-    zip:'',
+    zip_code:'',
     property_type:'',
     bedrooms:'',
     bathrooms:'',
@@ -42,7 +42,8 @@ export class SellerCreatePropComponent implements OnInit {
        if(data[0].path == 'prop_edit'){
           this.formTitle = (data[0].path == 'prop_edit')?'Edit':'Create';
           this.prop_id = data[1].path;
-          console.log("There is something more: ",data);
+          this.sellerservice.getPropertyDetails(this.prop_id)
+          .subscribe(res => {this.prop = res.property;console.log(res)});
        }
      },
      (error: any) => console.debug("URL ERROR", error));
@@ -50,26 +51,23 @@ export class SellerCreatePropComponent implements OnInit {
 
   ngOnInit() {
     this.sellerservice.zipAutoComplete()
-    .subscribe(res => {this.states = res;this.isZipLoading = true;});
+    .subscribe(res => {this.states = res.result;this.isZipLoading = true;});
 
     this.sellerservice.getPropertyTypes()
-    .subscribe(res => {this.proptypes = res;this.isProptypeLoading = true});
-
-    this.sellerservice.getPropertyDetails(this.prop_id)
-    .subscribe(res => this.prop = res.property);
+    .subscribe(res => {this.proptypes = res.property_types;this.isProptypeLoading = true});
   }  
 
   typeheadSelect(e:TypeaheadMatch){
     this.prop.city = e.item.city;
     this.prop.state = e.item.state;
-    this.prop.zip = e.item.zip;
+    this.prop.zip_code = e.item.zip_code;
   }
 
   createProperty(propertyForm){
     if(this.formTitle == "Edit"){
-      this.editProperty(propertyForm);
+      this.editProperty();
     }else{
-        this.sellerservice.createProperty(this.prop)
+      this.sellerservice.createProperty(this.prop)
       .subscribe(res => {
         console.log(res)
         if(!res.success){
@@ -82,8 +80,15 @@ export class SellerCreatePropComponent implements OnInit {
     }
   }
 
-  editProperty(propertyForm){
-    console.log(this.prop)
+  editProperty(){
+    this.sellerservice.updateProperty(this.prop)
+    .subscribe(res => {
+      if(!res.success){
+        this.toastr.info(res.error,'Information'); 
+      }else{
+        this.toastr.success('Property successfully updated','Success');
+      }
+    });
   }
 
 

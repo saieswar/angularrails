@@ -23,13 +23,17 @@ import { SignupService } from './services/signup.service';
 import { LoginService } from './services/login.service';
 import { ConfigService } from './services/config.service';
 import { SellerResolver } from './resolvers/seller.resolver';
+import { AgentResolver } from './resolvers/agent.resolver';
 import { SellerdashboardComponent } from './sellerdashboard/sellerdashboard.component';
+import { AgentService } from "./services/agent.service";
 import { AgentdashboardComponent } from './agentdashboard/agentdashboard.component';
 import { SellerService } from "./services/seller.service";
 import { SellerCreatePropComponent } from './seller-create-prop/seller-create-prop.component';
 
 import { TypeaheadModule, ModalModule } from 'ngx-bootstrap';
 import { SellerPropListComponent } from './seller-prop-list/seller-prop-list.component';
+import { AgentSignupComponent } from './agent-signup/agent-signup.component';
+import { AgentPropListComponent } from './agent-prop-list/agent-prop-list.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +46,9 @@ import { SellerPropListComponent } from './seller-prop-list/seller-prop-list.com
     SellerdashboardComponent,
     AgentdashboardComponent,
     SellerCreatePropComponent,
-    SellerPropListComponent
+    SellerPropListComponent,
+    AgentSignupComponent,
+    AgentPropListComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -59,7 +65,9 @@ import { SellerPropListComponent } from './seller-prop-list/seller-prop-list.com
     LoginService,
     ConfigService,
     SellerResolver,
-    SellerService
+    AgentResolver,
+    SellerService,
+    AgentService
   ],
   bootstrap: [AppComponent]
 })

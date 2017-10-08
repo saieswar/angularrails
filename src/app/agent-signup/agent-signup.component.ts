@@ -12,14 +12,14 @@ export class AgentSignupComponent implements OnInit {
 isZipLoading:boolean;
 states:string;
 agentObj = {
-  agency_name:"demo",
-  address:"asdadsfasd",
-  email:"john2@mailinator.com",
-  full_name:"john",
-  password:"password",
-  password_confirmation:"password",
-  phone:"2342342342",
-  real_estate_license:"1241234123",
+  agency_name:"",
+  address:"",
+  email:"",
+  full_name:"",
+  password:"",
+  password_confirmation:"",
+  phone:"",
+  real_estate_license:"",
   zip_code:"",
   role:"Agent"
 }

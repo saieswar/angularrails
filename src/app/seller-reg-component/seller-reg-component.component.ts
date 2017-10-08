@@ -28,6 +28,7 @@ export class SellerRegComponentComponent implements OnInit {
   sellerSignup(regForm){
     this.signupservice.signup(this.sellerObj)
     .subscribe(res => {
+        console.log(res)
       if(!res.success){
         this.toastr.error(res.error+'!', 'Sorry!');
       }else if(res.success){

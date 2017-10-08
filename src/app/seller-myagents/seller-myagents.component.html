@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="panel-group">
+      <div class="panel panel-default" *ngFor="let prop of propdetails">
+        <div class="panel-heading"><h4>Agent Contact Info</h4></div>
+        <div class="panel-body">
+          <h4>Property Details</h4>
+          <table>
+            <tr>
+              <td><label>Address:</label></td>
+              <td>{{prop.address}}</td>
+            </tr>
+            <tr>
+              <td><label>Zip: </label></td>
+              <td>{{prop.zip_code1}}</td>
+            </tr>
+            <tr>
+              <td><label>City: </label></td>
+              <td>{{prop.city}}</td>
+            </tr>
+            <tr>
+              <td><label>State: </label></td>
+              <td>{{prop.state}}</td>
+            </tr>
+           <tr>
+              <td><label>Estimated Sale Price: </label></td>
+              <td>{{prop.est_sale_price}}</td>
+            </tr>
+          </table>
+          <h4>Agent Details</h4>
+          <table>
+            <tr>
+              <td><label>Agent Name: </label></td>
+              <td>{{prop.agent_name}}</td>
+            </tr>
+            <tr>
+              <td><label>Agency Name: </label></td>
+              <td>{{prop.agency_name}}</td>
+            </tr>
+            <tr>
+              <td><label>Real Estate License: </label></td>
+              <td>{{prop.real_estate_licensee}}</td>
+            </tr>
+            <tr>
+              <td><label>Email: </label></td>
+              <td>{{prop.email}}</td>
+            </tr>
+            <tr>
+              <td><label>Phone: </label></td>
+              <td>{{prop.phone}}</td>
+            </tr>
+            <tr>
+              <td><label>Bided Precentage: </label></td>
+              <td>{{prop.bid_percentage}}%</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+  </div>
+</div>

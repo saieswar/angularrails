@@ -13,9 +13,33 @@
                         </ul>
                         <br>
                         <br>
-                        <a *ngIf="!prop.bid_active" [routerLink]="['../prop_edit',prop.property_id]" class="blue-button">Place Bid</a>
+                        <button *ngIf="!prop.agent_bided && prop.property_status == 'Open'" class="btn btn-primary blue-button" (click)="openModal(template,prop)">Place Bid</button>
                     </div>
                 </div>
             </div>
     </div>
 </div>
+
+<template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Place Bid</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <form #bidForm="ngForm" novalidate (ngSubmit)="placeBid(bidForm)">
+    <div class="modal-body">
+      <label>Bid Percent (%)</label>
+      <input type="text" class="form-control" name="bidprecent" #bidpercent="ngModel" [(ngModel)]="bidObj.bid_percentage" minlength="2" maxlength="6" placeholder="Enter Bid Percent" required/>
+      <span class="pull-right text-danger" *ngIf="bidpercent.touched && bidpercent.errors?.required">This field is required</span><br>
+
+     <label>Select Services</label> 
+     <select class="form-control" name="bidservices" [(ngModel)]="bidObj.bid_services" multiple>
+      <option *ngFor="let s of services">{{s}}</option>
+     </select>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-success">Submit</button>
+    </div>
+  </form>
+</template>

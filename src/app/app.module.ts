@@ -34,6 +34,8 @@ import { TypeaheadModule, ModalModule } from 'ngx-bootstrap';
 import { SellerPropListComponent } from './seller-prop-list/seller-prop-list.component';
 import { AgentSignupComponent } from './agent-signup/agent-signup.component';
 import { AgentPropListComponent } from './agent-prop-list/agent-prop-list.component';
+import { SellerBidsComponent } from './seller-bids/seller-bids.component';
+import { SellerMyagentsComponent } from './seller-myagents/seller-myagents.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,9 @@ import { AgentPropListComponent } from './agent-prop-list/agent-prop-list.compon
     SellerCreatePropComponent,
     SellerPropListComponent,
     AgentSignupComponent,
-    AgentPropListComponent
+    AgentPropListComponent,
+    SellerBidsComponent,
+    SellerMyagentsComponent
   ],
   imports: [
     BrowserAnimationsModule,

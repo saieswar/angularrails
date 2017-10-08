@@ -109,7 +109,7 @@
                   #zip="ngModel"
                   class="form-control" placeholder="Zip" required>
 								</div>
-								<span class="pull-right text-danger" *ngIf="realestlic?.touched && realestlic.errors?.required">This field required</span>
+								<span class="pull-right text-danger" *ngIf="zip.touched && zip.errors?.required">This field required</span>
 							</div>
 						</div>
 
@@ -120,7 +120,7 @@
 									<span class="input-group-addon"><i class="fa fa-address-book fa" aria-hidden="true"></i></span>
 									<input type="text" class="form-control" name="realestlic" id="realestlic"  placeholder="Enter Real Estate Lincense" [(ngModel)]="agentObj.real_estate_license" #realestlic="ngModel" required #spy/>
 								</div>
-								<span class="pull-right text-danger" *ngIf="realestlic?.touched && realestlic.errors?.required">This field required</span>
+								<span class="pull-right text-danger" *ngIf="realestlic.touched && realestlic.errors?.required">This field required</span>
 							</div>
 						</div>
 

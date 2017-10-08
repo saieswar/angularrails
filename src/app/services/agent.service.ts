@@ -19,10 +19,30 @@ export class AgentService {
       headers:headers
     })
     .map(this.handleResponse)
-    .catch((error:any) => Observable.throw(error.json().error || 'Server Error'));
+    .catch(this.handleError);
   }
 
-    handleResponse(res:Response){
+  getAgentServices():Observable<any>{
+    let headers = new Headers();
+    headers.append('auth_token',localStorage.getItem('auth_token'));
+    return this.http.get(this.configservice.getIp()+'services',{
+      headers:headers
+    })
+    .map(this.handleResponse)
+    .catch(this.handleError);
+  }
+
+  placeBid(data):Observable<any>{
+    let headers = new Headers();
+    headers.append('auth_token',localStorage.getItem('auth_token'));
+    return this.http.post(this.configservice.getIp()+'place_bid',data,{
+      headers:headers
+    })
+    .map(this.handleResponse)
+    .catch(this.handleError);
+  }
+
+  handleResponse(res:Response){
      let data = res.json();
       if(data.error == "Not authorized!"){
         this.router.navigate(['/login']);
@@ -30,6 +50,10 @@ export class AgentService {
         // this.router.navigate(['/login']);
       }
       return data;
+  }
+
+  handleError(error){
+    return Observable.throw(error.json().error || 'Server Error')
   }
 
 }

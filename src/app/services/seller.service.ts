@@ -21,12 +21,13 @@ export class SellerService {
       headers:headers
     })
     .map(this.handleResponse)
-    .catch((error:any) => Observable.throw(error.json().error || 'Server Error'));
+    .catch(this.handleError);
   }
 
   zipAutoComplete(): Observable<any>{
     return this.http.get(this.configservice.getIp()+'zip_autocomplete')
     .map(this.handleResponse)
+    .catch(this.handleError);
   }
 
   getPropertyTypes(): Observable<any>{
@@ -36,6 +37,7 @@ export class SellerService {
       headers:headers
     })
     .map(this.handleResponse)
+    .catch(this.handleError);
   }
 
 
@@ -47,7 +49,7 @@ export class SellerService {
       headers:headers
     })
     .map(this.handleResponse)
-    .catch((error:any) => Observable.throw(error.json().error || 'Server Error'));
+    .catch(this.handleError);
   }
 
   getPropertyDetails(id):Observable<any>{
@@ -57,7 +59,7 @@ export class SellerService {
       headers:headers
     })
     .map(this.handleResponse)
-    .catch((error:any) => Observable.throw(error.json().error || 'Server Error'));
+    .catch(this.handleError);
   }
 
 
@@ -69,7 +71,37 @@ export class SellerService {
       headers:headers
     })
     .map(this.handleResponse)
-    .catch((error:any) => Observable.throw(error.json().error || 'Server Error'));
+    .catch(this.handleError);
+  }
+
+  getPropertyBids(id):Observable<any>{
+    let headers = new Headers();
+    headers.append('auth_token',localStorage.getItem('auth_token'));
+    return this.http.get(this.configservice.getIp()+'property_bids?property_id='+id,{
+      headers:headers
+    })
+    .map(this.handleResponse)
+    .catch(this.handleError);
+  }
+
+  placeBid(data):Observable<any>{
+    let headers = new Headers();
+    headers.append('auth_token',localStorage.getItem('auth_token'));
+    return this.http.post(this.configservice.getIp()+'accept_bid',data,{
+      headers:headers
+    })
+    .map(this.handleResponse)
+    .catch(this.handleError);    
+  }
+
+  getMyAgents():Observable<any>{
+     let headers = new Headers();
+    headers.append('auth_token',localStorage.getItem('auth_token'));
+    return this.http.get(this.configservice.getIp()+'my_agents',{
+      headers:headers
+    })
+    .map(this.handleResponse)
+    .catch(this.handleError); 
   }
 
   logout(){
@@ -87,4 +119,10 @@ export class SellerService {
       }
       return data;
   }
+
+   handleError(error){
+    return Observable.throw(error.json().error || 'Server Error')
+  }
+
+
 }

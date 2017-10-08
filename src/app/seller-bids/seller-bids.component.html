@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="panel-group" *ngFor="let info of bidsInfo">
+      <div class="panel panel-default">
+        <div class="panel-heading"><h4>Bid Details: status (<label>{{info.bid_status}}</label>)</h4></div>
+        <div class="panel-body">
+          <table>
+            <tr>
+              <td><label>Address:</label></td>
+              <td>{{info.property_details.address}}</td>
+            </tr>
+            <tr>
+              <td><label>Zip: </label></td>
+              <td>{{info.property_details.zip_code1}}</td>
+            </tr>
+            <tr>
+              <td><label>City: </label></td>
+              <td>{{info.property_details.city1}}</td>
+            </tr>
+            <tr>
+              <td><label>State: </label></td>
+              <td>{{info.property_details.state1}}</td>
+            </tr>
+           <tr>
+              <td><label>Estimated Sale Price: </label></td>
+              <td>{{info.property_details.est_sale_price}}</td>
+            </tr>
+          </table>
+          <table>
+            <tr>
+              <td><label>Bid Percentage: </label></td>
+              <td>{{info.bid_percentage}}%</td>
+            </tr>
+            <tr>
+              <td><label>Services: </label><br><ul><li *ngFor="let s of info.bid_services">{{s}}</li></ul></td>
+            </tr>
+          </table>
+
+          <table>
+            <tr>
+              <td><label>Agency Name: </label></td>
+              <td>{{info.agency_name}}</td>
+            </tr>
+            <tr>
+              <td><label>Real Estate License: </label></td>
+              <td>{{info.real_estate_licensee}}</td>
+            </tr>
+          </table>
+
+           <button class="btn btn-success pull-right" *ngIf="info.property_status == 'Open'" (click)="placeBid(info)">Accept Bid</button>
+        </div>
+      </div>
+  </div>
+</div>

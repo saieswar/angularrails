@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { AgentService } from '../services/agent.service';
 import { SellerService } from '../services/seller.service';
 
 @Component({
@@ -8,9 +10,15 @@ import { SellerService } from '../services/seller.service';
 })
 export class AgentdashboardComponent implements OnInit {
 
-  constructor(private sellerservice:SellerService) { }
+  user_name:string;
 
-  ngOnInit() {}
+  constructor(private route:ActivatedRoute,
+  private agentservices:AgentService,
+  private sellerservice:SellerService) { }
+
+  ngOnInit() {
+    this.user_name = this.route.snapshot.data['properties'].user['full_name'];
+  }
 
   agentLogout(){
     this.sellerservice.logout();

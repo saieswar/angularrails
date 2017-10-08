@@ -10,6 +10,8 @@ import { SellerdashboardComponent } from './sellerdashboard/sellerdashboard.comp
 import { SellerResolver } from './resolvers/seller.resolver';
 import { SellerCreatePropComponent } from './seller-create-prop/seller-create-prop.component';
 import { SellerPropListComponent } from './seller-prop-list/seller-prop-list.component';
+import { SellerBidsComponent } from './seller-bids/seller-bids.component';
+import { SellerMyagentsComponent } from './seller-myagents/seller-myagents.component';
 
 import { AgentdashboardComponent } from "./agentdashboard/agentdashboard.component";
 import { AgentSignupComponent } from './agent-signup/agent-signup.component';
@@ -35,7 +37,9 @@ export const routes: Routes = [
         { path:'',redirectTo:'/seller/prop_list' ,pathMatch:'full'},
         { path:'create_prop',component:SellerCreatePropComponent },
         { path:'prop_list',component:SellerPropListComponent },
-        { path:'prop_edit/:id',component:SellerCreatePropComponent }
+        { path:'prop_edit/:id',component:SellerCreatePropComponent },
+        { path:'bids_list/:id',component:SellerBidsComponent },
+        { path:'my_agents',component:SellerMyagentsComponent }
       ] 
     },
     { path:'agent',

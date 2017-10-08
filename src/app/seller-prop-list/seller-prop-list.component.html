@@ -15,6 +15,7 @@
                         <br>
                         <br>
                         <a *ngIf="!prop.bid_active" [routerLink]="['../prop_edit',prop.property_id]" class="blue-button">Edit</a>
+                        <a *ngIf="prop.bids_count > 0" [routerLink]="['../bids_list',prop.property_id]" class="blue-button">Show Bids</a>
                     </div>
                 </div>
             </div>
@@ -29,12 +30,33 @@
     </button>
   </div>
   <div class="modal-body">
-    <label>Address: {{propdetail.address}}</label><br>
-    <label>Zip: {{propdetail.zip_code}}</label><br>
-    <label>City: {{propdetail.city}}</label><br>
-    <label>State: {{propdetail.state}}</label><br>
-    <label>Lot Size: {{propdetail.lot_size}}</label><br>
-    <label>Estimated Sale Price: {{propdetail.est_sale_price}}</label>
+
+         <table>
+            <tr>
+              <td><label>Address:</label></td>
+              <td>{{propdetail.address}}</td>
+            </tr>
+            <tr>
+              <td><label>Zip: </label></td>
+              <td>{{propdetail.zip_code}}</td>
+            </tr>
+            <tr>
+              <td><label>City: </label></td>
+              <td>{{propdetail.city}}</td>
+            </tr>
+            <tr>
+              <td><label>State: </label></td>
+              <td>{{propdetail.state}}</td>
+            </tr>
+           <tr>
+              <td><label>Lot Size: </label></td>
+              <td>{{propdetail.lot_size}}</td>
+            </tr>
+           <tr>
+              <td><label>Estimated Sale Price: </label></td>
+              <td>{{propdetail.est_sale_price}}</td>
+            </tr>
+          </table>    
   </div>
   <div class="modal-footer">
       <button class="btn btn-default" (click)="modalRef.hide()">Close</button>

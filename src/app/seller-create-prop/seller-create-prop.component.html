@@ -3,7 +3,7 @@
 </div>
 <div *ngIf="isZipLoading && isProptypeLoading">
   <br>
-  <h2>{{formTitle}} Property</h2>
+  <h2 align="center">{{formTitle}} Property</h2>
   <div class="container">
     <form #propertyForm="ngForm" (ngSubmit)="createProperty(propertyForm)" novalidate>
     <label>Address</label>

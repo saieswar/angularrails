@@ -21,7 +21,7 @@ export class SellerCreatePropComponent implements OnInit {
   isZipLoading:boolean;
   isProptypeLoading:boolean;
   proptypes:any[];
-  formTitle:string;
+  formTitle:string = 'Create';
   prop_id:string;
   prop = {
     city:'',
@@ -60,7 +60,7 @@ export class SellerCreatePropComponent implements OnInit {
   typeheadSelect(e:TypeaheadMatch){
     this.prop.city = e.item.city;
     this.prop.state = e.item.state;
-    this.prop.zip_code = e.item.zip_code;
+    this.prop.zip_code = e.item.zip;
   }
 
   createProperty(propertyForm){

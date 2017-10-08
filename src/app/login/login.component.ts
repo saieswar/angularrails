@@ -21,10 +21,10 @@ export class LoginComponent implements OnInit {
   login(){
     this.loginservice.login(this.user)
     .subscribe(res => {
+      console.log(res);
       if(!res.success){
         this.toastr.error(res.error+'!', 'Sorry!');
       }else if(res.success){
-        console.log(res);
         if(res.user.role == 'Seller'){
           localStorage.setItem('auth_token',res.user.auth_token);
           this.router.navigate(["/seller"]);

@@ -11,10 +11,10 @@ export class AgentMybidsComponent implements OnInit {
   constructor(private agentservice:AgentService) { }
 
   ngOnInit() {
-    this.agentservice.getAgentProperties()
+    this.agentservice.getWonBids()
     .subscribe((res)=>{
       console.log(res);
-      this.properties = res.properties;
+      this.properties = res.bids_info;
     });
   }
 

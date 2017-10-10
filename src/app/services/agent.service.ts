@@ -42,6 +42,16 @@ export class AgentService {
     .catch(this.handleError);
   }
 
+  getWonBids():Observable<any>{
+    let headers = new Headers();
+    headers.append('auth_token',localStorage.getItem('auth_token'));
+    return this.http.get(this.configservice.getIp()+'won_bids',{
+      headers:headers
+    })
+    .map(this.handleResponse)
+    .catch(this.handleError);
+  }
+
   handleResponse(res:Response){
      let data = res.json();
       if(data.error == "Not authorized!"){

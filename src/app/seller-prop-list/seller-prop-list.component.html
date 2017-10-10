@@ -1,5 +1,8 @@
 <div class="index-content">
     <div class="container">
+        <div class="alert alert-danger" *ngIf="properties?.length == 0 || !properties">
+          <strong>Sorry!</strong> There are no properties.
+        </div>
             <div href="blog-ici.html" *ngFor="let prop of properties"  (click)="openModal(template,prop)">
                 <div class="col-lg-4">
                     <div class="card">

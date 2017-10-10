@@ -1,4 +1,7 @@
 <div class="container">
+  <div class="alert alert-danger" *ngIf="propdetails?.length == 0">
+      <strong>Sorry!</strong> There are no agents.
+  </div>
   <div class="panel-group">
       <div class="panel panel-default" *ngFor="let prop of propdetails">
         <div class="panel-heading"><h4>Agent Contact Info</h4></div>

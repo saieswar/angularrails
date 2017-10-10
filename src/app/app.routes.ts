@@ -17,6 +17,7 @@ import { AgentdashboardComponent } from "./agentdashboard/agentdashboard.compone
 import { AgentSignupComponent } from './agent-signup/agent-signup.component';
 import { AgentResolver } from './resolvers/agent.resolver';
 import { AgentPropListComponent } from './agent-prop-list/agent-prop-list.component';
+import { AgentMybidsComponent } from './agent-mybids/agent-mybids.component';
 
 export const routes: Routes = [
     { path: '', 
@@ -49,7 +50,8 @@ export const routes: Routes = [
       },
       children:[
         { path:'', redirectTo:'/agent/prop_list',pathMatch:'full' },
-        { path:'prop_list',component:AgentPropListComponent }
+        { path:'prop_list',component:AgentPropListComponent },
+        { path:'mybids',component:AgentMybidsComponent }
       ]
     },
     { path: '**', component: PageNotFoundComponent }

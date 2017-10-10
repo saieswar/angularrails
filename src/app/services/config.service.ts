@@ -6,7 +6,7 @@ export class ConfigService {
   constructor() { }
 
   getIp():string{
-    return 'https://63f085bd.ngrok.io/';
+    return 'http://172.16.19.246:3001/';
   }
 
 }

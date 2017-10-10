@@ -36,6 +36,7 @@ import { AgentSignupComponent } from './agent-signup/agent-signup.component';
 import { AgentPropListComponent } from './agent-prop-list/agent-prop-list.component';
 import { SellerBidsComponent } from './seller-bids/seller-bids.component';
 import { SellerMyagentsComponent } from './seller-myagents/seller-myagents.component';
+import { AgentMybidsComponent } from './agent-mybids/agent-mybids.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { SellerMyagentsComponent } from './seller-myagents/seller-myagents.compo
     AgentSignupComponent,
     AgentPropListComponent,
     SellerBidsComponent,
-    SellerMyagentsComponent
+    SellerMyagentsComponent,
+    AgentMybidsComponent
   ],
   imports: [
     BrowserAnimationsModule,

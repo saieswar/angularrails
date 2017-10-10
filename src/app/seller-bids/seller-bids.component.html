@@ -31,6 +31,10 @@
               <td>{{info.bid_percentage}}%</td>
             </tr>
             <tr>
+              <td><label>potential savings: </label></td>
+              <td>{{((6/100)*info.property_details.est_sale_price) - ((info.bid_percentage/100)*info.property_details.est_sale_price)}}</td>
+            </tr>
+            <tr>
               <td><label>Services: </label><br><ul><li *ngFor="let s of info.bid_services">{{s}}</li></ul></td>
             </tr>
           </table>

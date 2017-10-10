@@ -19,7 +19,9 @@ export class SellerPropListComponent implements OnInit {
     this.sellerservice.getProperties()
     .subscribe(res => {
       this.properties = res.properties;
-      console.log(this.properties)
+      if(this.properties == undefined){
+          this.properties = 'empty'
+      }
     })
   }
 

@@ -38,6 +38,9 @@ import { SellerBidsComponent } from './seller-bids/seller-bids.component';
 import { SellerMyagentsComponent } from './seller-myagents/seller-myagents.component';
 import { AgentMybidsComponent } from './agent-mybids/agent-mybids.component';
 
+import { TagInputModule } from 'ngx-chips'; 
+ 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,6 +61,7 @@ import { AgentMybidsComponent } from './agent-mybids/agent-mybids.component';
   ],
   imports: [
     BrowserAnimationsModule,
+    TagInputModule,
     BrowserModule,
     FormsModule,
     HttpModule,

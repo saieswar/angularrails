@@ -85,7 +85,7 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-address-book fa" aria-hidden="true"></i></span>
-									<textarea class="form-control" name="address" id="address"  placeholder="Enter Address" [(ngModel)]="agentObj.address" #agencyname="ngModel" required #spy></textarea>
+									<textarea class="form-control" name="address" id="address"  placeholder="Enter Address" [(ngModel)]="agentObj.address" #agencyname="ngModel" #spy></textarea>
 								</div>
 								<span class="pull-right text-danger" *ngIf="address?.touched && address.errors?.required">This field required</span>
 							</div>
@@ -97,7 +97,7 @@
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-address-book fa" aria-hidden="true"></i></span>
 									
-                  <template #customItemTemplate let-model="item" let-index="index">
+                  <!-- <template #customItemTemplate let-model="item" let-index="index">
                     <h5>{{model.city}}</h5>
                   </template>
                   <input [(ngModel)]="agentObj.zip_code"
@@ -107,9 +107,17 @@
                   [typeaheadItemTemplate]="customItemTemplate"
                   name="zip"
                   #zip="ngModel"
-                  class="form-control" placeholder="Zip" required>
+				  class="form-control" placeholder="Zip" required> -->
+				  
+				  <tag-input [(ngModel)]="agentObj.zip_codes" class="form-control" name="zip" theme="minimal" [onlyFromAutocomplete]="true">
+					<tag-input-dropdown [autocompleteItems]="states" [displayBy]="'zip'" [identifyBy]="'city'">
+						<ng-template let-item="item" let-index="index">
+							{{ item.city }}
+						</ng-template>
+					</tag-input-dropdown>
+			 </tag-input>
 								</div>
-								<span class="pull-right text-danger" *ngIf="zip.touched && zip.errors?.required">This field required</span>
+								<span class="pull-right text-danger" *ngIf="zip?.touched && zip.errors?.required">This field required</span>
 							</div>
 						</div>
 

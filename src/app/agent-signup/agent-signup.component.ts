@@ -10,7 +10,7 @@ import { SellerService } from '../services/seller.service';
 })
 export class AgentSignupComponent implements OnInit {
 isZipLoading:boolean;
-states:string;
+states=[];
 agentObj = {
   agency_name:"",
   address:"",
@@ -20,20 +20,25 @@ agentObj = {
   password_confirmation:"",
   phone:"",
   real_estate_license:"",
-  zip_code:"",
+  zip_codes:[],
   role:"Agent"
 }
+
+items = [];
+
   constructor(private signupservice:SignupService,
   private toastr:ToastsManager,
   private sellerservice:SellerService) {
-    this.sellerservice.zipAutoComplete()
-    .subscribe(res => {console.log(res.result);this.states = res.result;this.isZipLoading = true;});
+    this.states = [{city:'asdfas',zip:'400'}, {city: 'qwer', zip: '95670'}];
+    // this.sellerservice.zipAutoComplete()
+    // .subscribe(res => {console.log(res.result);this.states = res.result;this.isZipLoading = true;});
   }
 
   ngOnInit() {
   }
 
   agentSignup(agentForm){
+    console.log(this.agentObj)
     this.signupservice.signup(this.agentObj)
     .subscribe((res)=>{
       if(!res.success){
@@ -44,5 +49,10 @@ agentObj = {
       }
     });
   }
+
+  remove(item){
+    this.states.splice(this.states.indexOf(item),1);
+}
+
 
 }

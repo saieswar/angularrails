@@ -6,8 +6,8 @@
   <div class="row main">
     <div class="main-login main-center">
 
-      <h2>Agent Signup</h2>
-      <form #agentRegForm="ngForm" (ngSubmit)="agentRegForm.valid && agentSignup(agentRegForm)">
+      <h2>Buyer Signup</h2>
+      <form #buyerRegForm="ngForm" (ngSubmit)="buyerRegForm.valid && buyerSignup(buyerRegForm)">
 
         <div class="form-group">
           <label for="name" class="cols-sm-2 control-label">Full Name</label>
@@ -16,7 +16,7 @@
               <span class="input-group-addon">
                 <i class="fa fa-user fa" aria-hidden="true"></i>
               </span>
-              <input type="text" class="form-control" name="fullname" id="fullname" placeholder="Enter your Full Name" [(ngModel)]="agentObj.full_name"
+              <input type="text" class="form-control" name="fullname" id="fullname" placeholder="Enter your Full Name" [(ngModel)]="buyerObj.full_name"
                 #fullname="ngModel" required #spy/>
             </div>
             <span class="pull-right text-danger" *ngIf="fullname.touched && fullname.errors?.required">This field required</span>
@@ -31,7 +31,7 @@
               <span class="input-group-addon">
                 <i class="fa fa-envelope fa" aria-hidden="true"></i>
               </span>
-              <input type="text" class="form-control" name="email" id="email" placeholder="Enter your Email" [(ngModel)]="agentObj.email"
+              <input type="text" class="form-control" name="email" id="email" placeholder="Enter your Email" [(ngModel)]="buyerObj.email"
                 #email="ngModel" [email]="true" required/>
             </div>
             <span class="pull-right text-danger" *ngIf="email.touched && email.errors?.required">This field required</span>
@@ -47,7 +47,7 @@
               <span class="input-group-addon">
                 <i class="fa fa-lock fa-lg" aria-hidden="true"></i>
               </span>
-              <input type="password" class="form-control" name="password" id="password" placeholder="Enter your Password" [(ngModel)]="agentObj.password"
+              <input type="password" class="form-control" name="password" id="password" placeholder="Enter your Password" [(ngModel)]="buyerObj.password"
                 #password="ngModel" required minlength="6" validateEqual="confirm" reverse="true" />
             </div>
             <span class="pull-right text-danger" *ngIf="password.touched && password.errors?.required">This field required</span>
@@ -62,7 +62,7 @@
               <span class="input-group-addon">
                 <i class="fa fa-lock fa-lg" aria-hidden="true"></i>
               </span>
-              <input type="password" class="form-control" name="confirm" id="confirm" placeholder="Confirm your Password" [(ngModel)]="agentObj.password_confirmation"
+              <input type="password" class="form-control" name="confirm" id="confirm" placeholder="Confirm your Password" [(ngModel)]="buyerObj.password_confirmation"
                 #confirmpassword="ngModel" required validateEqual="password" />
             </div>
             <span class="pull-right text-danger" *ngIf="confirmpassword.touched && confirmpassword.errors?.required">This field required</span>
@@ -77,27 +77,13 @@
               <span class="input-group-addon">
                 <i class="fa fa-phone fa" aria-hidden="true"></i>
               </span>
-              <input type="text" class="form-control" name="phone" id="phone" placeholder="Enter your Phone" [(ngModel)]="agentObj.phone"
+              <input type="text" class="form-control" name="phone" id="phone" placeholder="Enter your Phone" [(ngModel)]="buyerObj.phone"
                 #phone="ngModel" required #spy/>
             </div>
             <span class="pull-right text-danger" *ngIf="phone.touched && phone.errors?.required">This field required</span>
           </div>
-        </div>
-
-        <div class="form-group">
-          <label for="name" class="cols-sm-2 control-label">Agency Name</label>
-          <div class="cols-sm-10">
-            <div class="input-group">
-              <span class="input-group-addon">
-                <i class="fa fa-university" aria-hidden="true"></i>
-              </span>
-              <input type="text" class="form-control" name="agencyname" id="agencyname" placeholder="Enter Agency Name" [(ngModel)]="agentObj.agency_name"
-                #agencyname="ngModel" required #spy/>
-            </div>
-            <span class="pull-right text-danger" *ngIf="agencyname?.touched && agencyname.errors?.required">This field required</span>
-          </div>
-        </div>
-
+		</div>
+		
         <div class="form-group">
           <label for="name" class="cols-sm-2 control-label">Address</label>
           <div class="cols-sm-10">
@@ -105,7 +91,7 @@
               <span class="input-group-addon">
                 <i class="fa fa-address-book fa" aria-hidden="true"></i>
               </span>
-              <textarea class="form-control" name="address" id="address" placeholder="Enter Address" [(ngModel)]="agentObj.address" #agencyname="ngModel"
+              <textarea class="form-control" name="address" id="address" placeholder="Enter Address" [(ngModel)]="buyerObj.address" #agencyname="ngModel"
                 #spy></textarea>
             </div>
             <span class="pull-right text-danger" *ngIf="address?.touched && address.errors?.required">This field required</span>
@@ -119,45 +105,15 @@
               <span class="input-group-addon">
                 <i class="fa fa-address-book fa" aria-hidden="true"></i>
               </span>
-
-              <!-- <template #customItemTemplate let-model="item" let-index="index">
-                    <h5>{{model.city}}</h5>
-                  </template>
-                  <input [(ngModel)]="agentObj.zip_code"
-                  [typeahead]="states"
-                  typeaheadOptionField="zip"
-                  typeaheadOptionsLimit="7"
-                  [typeaheadItemTemplate]="customItemTemplate"
-                  name="zip"
-                  #zip="ngModel"
-				  class="form-control" placeholder="Zip" required> -->
-
-              <tag-input [(ngModel)]="agentObj.zip_codes" class="form-control" name="zip" theme="minimal" [onlyFromAutocomplete]="true">
-                <tag-input-dropdown [autocompleteItems]="states" [displayBy]="'zip'" [identifyBy]="'city'">
-                  <ng-template let-item="item" let-index="index">
-                    {{ item.city }}
-                  </ng-template>
-                </tag-input-dropdown>
-              </tag-input>
+              <template #customItemTemplate let-model="item" let-index="index">
+                <h5>{{model.city}}</h5>
+              </template>
+              <input [(ngModel)]="buyerObj.zip_code" [typeahead]="states" typeaheadOptionField="zip" typeaheadOptionsLimit="7" [typeaheadItemTemplate]="customItemTemplate"
+                name="zip" #zip="ngModel" class="form-control" placeholder="Zip" required>
             </div>
             <span class="pull-right text-danger" *ngIf="zip?.touched && zip.errors?.required">This field required</span>
           </div>
         </div>
-
-        <div class="form-group">
-          <label for="name" class="cols-sm-2 control-label">Real Estate License</label>
-          <div class="cols-sm-10">
-            <div class="input-group">
-              <span class="input-group-addon">
-                <i class="fa fa-address-book fa" aria-hidden="true"></i>
-              </span>
-              <input type="text" class="form-control" name="realestlic" id="realestlic" placeholder="Enter Real Estate Lincense" [(ngModel)]="agentObj.real_estate_license"
-                #realestlic="ngModel" required #spy/>
-            </div>
-            <span class="pull-right text-danger" *ngIf="realestlic.touched && realestlic.errors?.required">This field required</span>
-          </div>
-        </div>
-
 
         <div class="form-group ">
           <input type="submit" class="btn btn-warning btn-lg btn-block login-button" value="Register">

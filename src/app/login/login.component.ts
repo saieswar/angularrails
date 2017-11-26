@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
   login(){
     this.loginservice.login(this.user)
     .subscribe(res => {
+      console.log(res);
       if(!res.success){
         this.toastr.error(res.error+'!', 'Sorry!');
       }else if(res.success){
@@ -30,6 +31,9 @@ export class LoginComponent implements OnInit {
         }else if(res.user.role == "Agent"){
           localStorage.setItem('auth_token',res.user.auth_token);
           this.router.navigate(["/agent"]);
+        }else if(res.user.role == "Buyer"){
+          localStorage.setItem('auth_token',res.user.auth_token);
+          this.router.navigate(["/buyer_props"]);
         }
       }
     },

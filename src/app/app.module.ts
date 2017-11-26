@@ -24,11 +24,13 @@ import { LoginService } from './services/login.service';
 import { ConfigService } from './services/config.service';
 import { SellerResolver } from './resolvers/seller.resolver';
 import { AgentResolver } from './resolvers/agent.resolver';
+import { BuyerResolver } from './resolvers/buyer.resolver';
 import { SellerdashboardComponent } from './sellerdashboard/sellerdashboard.component';
 import { AgentService } from "./services/agent.service";
 import { AgentdashboardComponent } from './agentdashboard/agentdashboard.component';
 import { SellerService } from "./services/seller.service";
 import { SellerCreatePropComponent } from './seller-create-prop/seller-create-prop.component';
+import { BuyerServiceService } from './services/buyer-service.service';
 
 import { TypeaheadModule, ModalModule } from 'ngx-bootstrap';
 import { SellerPropListComponent } from './seller-prop-list/seller-prop-list.component';
@@ -38,8 +40,9 @@ import { SellerBidsComponent } from './seller-bids/seller-bids.component';
 import { SellerMyagentsComponent } from './seller-myagents/seller-myagents.component';
 import { AgentMybidsComponent } from './agent-mybids/agent-mybids.component';
 
-import { TagInputModule } from 'ngx-chips'; 
- 
+import { TagInputModule } from 'ngx-chips';
+import { BuyerComponent } from './buyer/buyer.component';
+import { BuyerdashboardComponent } from './buyerdashboard/buyerdashboard.component'; 
 
 @NgModule({
   declarations: [
@@ -57,7 +60,9 @@ import { TagInputModule } from 'ngx-chips';
     AgentPropListComponent,
     SellerBidsComponent,
     SellerMyagentsComponent,
-    AgentMybidsComponent
+    AgentMybidsComponent,
+    BuyerComponent,
+    BuyerdashboardComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -76,9 +81,11 @@ import { TagInputModule } from 'ngx-chips';
     ConfigService,
     SellerResolver,
     AgentResolver,
+    BuyerResolver,
     SellerService,
-    AgentService
+    AgentService,
+    BuyerServiceService
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

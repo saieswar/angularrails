@@ -26,8 +26,9 @@ export class AgentPropListComponent implements OnInit {
   ngOnInit() {
     this.agentservice.getAgentProperties()
     .subscribe((res)=>{
+      console.log(res);
       this.properties = res.properties;
-    });
+  });
 
     this.agentservice.getAgentServices()
     .subscribe((res)=>{

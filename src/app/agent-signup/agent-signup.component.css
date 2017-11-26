@@ -19,7 +19,7 @@ label{
 	margin-bottom: 2px;
 }
 
-input,
+input,textarea,
 input::-webkit-input-placeholder {
     font-size: 18px;
     padding-top: 3px;

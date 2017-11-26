@@ -29,9 +29,8 @@ items = [];
   constructor(private signupservice:SignupService,
   private toastr:ToastsManager,
   private sellerservice:SellerService) {
-    this.states = [{city:'asdfas',zip:'400'}, {city: 'qwer', zip: '95670'}];
-    // this.sellerservice.zipAutoComplete()
-    // .subscribe(res => {console.log(res.result);this.states = res.result;this.isZipLoading = true;});
+    this.sellerservice.zipAutoComplete()
+    .subscribe(res => {console.log(res.result);this.states = res.result;this.isZipLoading = true;});
   }
 
   ngOnInit() {

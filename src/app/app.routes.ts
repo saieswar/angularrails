@@ -16,8 +16,11 @@ import { SellerMyagentsComponent } from './seller-myagents/seller-myagents.compo
 import { AgentdashboardComponent } from "./agentdashboard/agentdashboard.component";
 import { AgentSignupComponent } from './agent-signup/agent-signup.component';
 import { AgentResolver } from './resolvers/agent.resolver';
+import { BuyerResolver } from './resolvers/buyer.resolver';
 import { AgentPropListComponent } from './agent-prop-list/agent-prop-list.component';
 import { AgentMybidsComponent } from './agent-mybids/agent-mybids.component';
+import { BuyerComponent } from './buyer/buyer.component';
+import { BuyerdashboardComponent } from './buyerdashboard/buyerdashboard.component';
 
 export const routes: Routes = [
     { path: '', 
@@ -26,6 +29,7 @@ export const routes: Routes = [
          { path:'', redirectTo:'/login', pathMatch:'full' },
          { path: 'seller_signup', component: SellerRegComponentComponent },
          { path:'agent_signup',component:AgentSignupComponent },
+         { path:'buyer_signup',component:BuyerComponent },
          { path: 'login', component: LoginComponent }
       ] 
     },
@@ -54,6 +58,11 @@ export const routes: Routes = [
         { path:'mybids',component:AgentMybidsComponent }
       ]
     },
+    { path:'buyer_props',component:BuyerdashboardComponent,
+      resolve:{
+        properties:BuyerResolver
+      }
+    }, 
     { path: '**', component: PageNotFoundComponent }
 ];
 

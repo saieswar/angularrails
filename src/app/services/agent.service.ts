@@ -4,6 +4,7 @@ import { ConfigService } from '../services/config.service';
 import { Router } from '@angular/router';
 
 import { Observable } from 'rxjs/Observable';
+import { HAMMER_GESTURE_CONFIG } from '@angular/platform-browser/src/dom/events/hammer_gestures';
 
 @Injectable()
 export class AgentService {
@@ -46,6 +47,26 @@ export class AgentService {
     let headers = new Headers();
     headers.append('auth_token',localStorage.getItem('auth_token'));
     return this.http.get(this.configservice.getIp()+'won_bids',{
+      headers:headers
+    })
+    .map(this.handleResponse)
+    .catch(this.handleError);
+  }
+
+  getBuyers(bid_id:number){
+    let headers = new Headers();
+    headers.append('auth_token',localStorage.getItem('auth_token'));
+    return this.http.get(this.configservice.getIp()+'select_buyers?bid_id='+bid_id,{
+      headers:headers
+    })
+    .map(this.handleResponse)
+    .catch(this.handleError);
+  }
+
+  closeBid(closebid){
+    let headers = new Headers();
+    headers.append('auth_token',localStorage.getItem('auth_token'));
+    return this.http.get(this.configservice.getIp()+'close_property?bid_id='+closebid.bid_id+'&buyer_id='+closebid.buyer_id,{
       headers:headers
     })
     .map(this.handleResponse)

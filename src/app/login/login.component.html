@@ -1,45 +1,51 @@
-		<!-- Google Fonts -->
-		<link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
-		<link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+<!-- Google Fonts -->
+<link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
 
 
 
 <div class="container">
-			<div class="row main">
-				<div class="main-login main-center">
+  <div class="row main">
+    <div class="main-login main-center">
 
-	<h2>Login</h2>
-					<form #loginForm="ngForm" (ngSubmit)="loginForm.valid && login()">
+      <h2>Login</h2>
+      <form #loginForm="ngForm" (ngSubmit)="loginForm.valid && login()">
 
-						<div class="form-group">
-							<label for="email" class="cols-sm-2 control-label">Your Email</label>
-							<div class="cols-sm-10">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="email" id="email"  placeholder="Enter your Email"  [(ngModel)]="user.email" #email="ngModel" [email]="true" required/>
-								</div>
-								<span class="pull-right text-danger" *ngIf="email.touched && email.errors?.required">This field required</span>
-								<span class="pull-right text-danger" *ngIf="email.touched && !email.errors?.required && email.invalid">Invalid email</span>
-							</div>
-						</div>
+        <div class="form-group">
+          <label for="email" class="cols-sm-2 control-label">Your Email</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="fa fa-envelope fa" aria-hidden="true"></i>
+              </span>
+              <input type="text" class="form-control" name="email" id="email" placeholder="Enter your Email" [(ngModel)]="user.email" #email="ngModel"
+                [email]="true" required/>
+            </div>
+            <span class="pull-right text-danger" *ngIf="email.touched && email.errors?.required">This field required</span>
+            <span class="pull-right text-danger" *ngIf="email.touched && !email.errors?.required && email.invalid">Invalid email</span>
+          </div>
+        </div>
 
 
-						<div class="form-group">
-							<label for="password" class="cols-sm-2 control-label">Password</label>
-							<div class="cols-sm-10">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-									<input type="password" class="form-control" name="password" id="password"  placeholder="Enter your Password" [(ngModel)]="user.password" #password="ngModel" required/>
-								</div>
-								<span class="pull-right text-danger" *ngIf="password.touched && password.errors?.required">This field required</span>
-							</div>
-						</div>
-            <br>
-						<div class="form-group ">
-							<input type="submit" class="btn btn-warning btn-lg btn-block" value="Sigin">
-						</div>
-						
-					</form>
-				</div>
-			</div>
-		</div>
+        <div class="form-group">
+          <label for="password" class="cols-sm-2 control-label">Password</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="fa fa-lock fa-lg" aria-hidden="true"></i>
+              </span>
+              <input type="password" class="form-control" name="password" id="password" placeholder="Enter your Password" [(ngModel)]="user.password"
+                #password="ngModel" required/>
+            </div>
+            <span class="pull-right text-danger" *ngIf="password.touched && password.errors?.required">This field required</span>
+          </div>
+        </div>
+        <br>
+        <div class="form-group ">
+          <input type="submit" class="btn btn-warning btn-lg btn-block" value="Sigin">
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

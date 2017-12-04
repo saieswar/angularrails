@@ -28,15 +28,16 @@ export class SellerBidsComponent implements OnInit {
   ngOnInit() {
   }
 
-  placeBid(bidObj){
-    this.sellerservice.placeBid(bidObj)
+  acceptBid(bidObj){
+    this.sellerservice.acceptBid(bidObj)
     .subscribe((res)=>{
+      console.log(res);
       if(res.success){
         this.toast.success(res.message+'!','Success');
         bidObj.bid_status = res.bid_status;
         bidObj.property_status = res.property_status;
       }else{
-        this.toast.error(res.message,'Sorry');
+        this.toast.info(res.error,'Sorry');
       }
     })
   }

@@ -11,7 +11,17 @@ export class BuyerServiceService {
   public configservice:ConfigService,
   public router:Router) { }
 
-  getBuyserProperties():Observable<any>{
+  getBuyerProperties():Observable<any>{
+    let headers = new Headers();
+    headers.append('auth_token',localStorage.getItem('auth_token'));
+    return this.http.get(this.configservice.getIp()+'buyer_list_properties',{
+      headers:headers
+    })
+    .map(this.handleResponse)
+    .catch(this.handleError);
+  }
+
+  getBuyerWonProperties():Observable<any>{
     let headers = new Headers();
     headers.append('auth_token',localStorage.getItem('auth_token'));
     return this.http.get(this.configservice.getIp()+'buyer_properties',{
@@ -21,6 +31,15 @@ export class BuyerServiceService {
     .catch(this.handleError);
   }
 
+  buyerInterested(propertyid){
+    let headers = new Headers();
+    headers.append('auth_token',localStorage.getItem('auth_token'));
+    return this.http.post(this.configservice.getIp()+'buyer_interest_property',{'property_id':propertyid},{
+      headers:headers
+    })
+    .map(this.handleResponse)
+    .catch(this.handleError);
+  }
   
   handleResponse(res:Response){
     let data = res.json();

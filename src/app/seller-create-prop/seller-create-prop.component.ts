@@ -69,7 +69,7 @@ export class SellerCreatePropComponent implements OnInit {
     }else{
       this.sellerservice.createProperty(this.prop)
       .subscribe(res => {
-        console.log(res)
+        console.log(res);
         if(!res.success){
           this.toastr.info(res.error,'Information'); 
         }else{

@@ -84,7 +84,7 @@ export class SellerService {
     .catch(this.handleError);
   }
 
-  placeBid(data):Observable<any>{
+  acceptBid(data):Observable<any>{
     let headers = new Headers();
     headers.append('auth_token',localStorage.getItem('auth_token'));
     return this.http.post(this.configservice.getIp()+'accept_bid',data,{
@@ -121,6 +121,7 @@ export class SellerService {
   }
 
    handleError(error){
+    console.log(error);
     return Observable.throw(error.json().error || 'Server Error')
   }
 

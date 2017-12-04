@@ -11,7 +11,7 @@ export class BuyerResolver implements Resolve<any> {
   constructor(private buyerservice:BuyerServiceService) { }
 
   resolve():boolean | Observable<any[]> | Object{
-    return this.buyerservice.getBuyserProperties();
+    return this.buyerservice.getBuyerProperties();
     // return true
   }
 }

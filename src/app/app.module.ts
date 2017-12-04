@@ -42,7 +42,9 @@ import { AgentMybidsComponent } from './agent-mybids/agent-mybids.component';
 
 import { TagInputModule } from 'ngx-chips';
 import { BuyerComponent } from './buyer/buyer.component';
-import { BuyerdashboardComponent } from './buyerdashboard/buyerdashboard.component'; 
+import { BuyerdashboardComponent } from './buyerdashboard/buyerdashboard.component';
+import { BuyerPropsComponent } from './buyer-props/buyer-props.component';
+import { BuyerWonPropsComponent } from './buyer-won-props/buyer-won-props.component'; 
 
 @NgModule({
   declarations: [
@@ -62,7 +64,9 @@ import { BuyerdashboardComponent } from './buyerdashboard/buyerdashboard.compone
     SellerMyagentsComponent,
     AgentMybidsComponent,
     BuyerComponent,
-    BuyerdashboardComponent
+    BuyerdashboardComponent,
+    BuyerPropsComponent,
+    BuyerWonPropsComponent
   ],
   imports: [
     BrowserAnimationsModule,

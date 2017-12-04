@@ -50,7 +50,7 @@ export class AgentPropListComponent implements OnInit {
         this.selectedProp.agent_bided = true;
         this.toast.success(res.message+'!','Success');
       }else{
-        this.toast.info(res.message+'!','Sorry!');
+        this.toast.info(res.error+'!','Sorry!');
       }
     })
   }

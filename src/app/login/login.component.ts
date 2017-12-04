@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(["/agent"]);
         }else if(res.user.role == "Buyer"){
           localStorage.setItem('auth_token',res.user.auth_token);
-          this.router.navigate(["/buyer_props"]);
+          this.router.navigate(["/buyer"]);
         }
       }
     },

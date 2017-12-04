@@ -52,8 +52,7 @@
               <td>{{info.real_estate_licensee}}</td>
             </tr>
           </table>
-
-           <button class="btn btn-success pull-right" *ngIf="info.property_status == 'Open'" (click)="placeBid(info)">Accept Bid</button>
+           <button class="btn btn-success pull-right" *ngIf="info.bid_status != 'Bid Accepted' && info.bid_status != 'Bid Rejected'" (click)="acceptBid(info)">Accept Bid</button>
         </div>
       </div>
   </div>

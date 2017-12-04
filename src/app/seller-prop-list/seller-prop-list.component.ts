@@ -18,9 +18,10 @@ export class SellerPropListComponent implements OnInit {
   ngOnInit() {
     this.sellerservice.getProperties()
     .subscribe(res => {
+      console.log(res);
       this.properties = res.properties;
       if(this.properties == undefined){
-          this.properties = 'empty'
+          this.properties = [];
       }
     })
   }

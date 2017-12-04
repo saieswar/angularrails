@@ -21,6 +21,8 @@ import { AgentPropListComponent } from './agent-prop-list/agent-prop-list.compon
 import { AgentMybidsComponent } from './agent-mybids/agent-mybids.component';
 import { BuyerComponent } from './buyer/buyer.component';
 import { BuyerdashboardComponent } from './buyerdashboard/buyerdashboard.component';
+import { BuyerPropsComponent } from './buyer-props/buyer-props.component';
+import { BuyerWonPropsComponent } from './buyer-won-props/buyer-won-props.component';
 
 export const routes: Routes = [
     { path: '', 
@@ -58,10 +60,15 @@ export const routes: Routes = [
         { path:'mybids',component:AgentMybidsComponent }
       ]
     },
-    { path:'buyer_props',component:BuyerdashboardComponent,
+    { path:'buyer',component:BuyerdashboardComponent,
       resolve:{
         properties:BuyerResolver
-      }
+      },
+      children:[
+        { path:'',redirectTo:'/buyer/props',pathMatch:'full' },
+        { path:'props',component:BuyerPropsComponent },
+        { path:'won-props',component:BuyerWonPropsComponent }
+      ]
     }, 
     { path: '**', component: PageNotFoundComponent }
 ];
